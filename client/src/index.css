@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+}
+
+a { text-decoration: none; color: white; font-weight: bold; }
+
+button { padding: 8px 14px; border: none; background: #198754; color: white; border-radius: 5px; cursor: pointer; }
+
+input { padding: 10px; font-size: 16px; }
