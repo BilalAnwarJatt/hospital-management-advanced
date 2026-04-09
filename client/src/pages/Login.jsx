@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 import API from "../services/api";
 
-function Login() {
+const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const changeHandler = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -12,10 +14,8 @@ function Login() {
     e.preventDefault();
     try {
       const { data } = await API.post("/auth/login", form);
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data));
+      login(data);
       navigate("/");
-      window.location.reload();
     } catch (error) {
       alert(error.response?.data?.message || "Login failed");
     }
@@ -24,16 +24,8 @@ function Login() {
   return (
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
       <form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "15px",
-          width: "300px",
-          padding: "30px",
-          border: "1px solid #ccc",
-          borderRadius: "10px",
-        }}
         onSubmit={submitHandler}
+        style={{ display: "flex", flexDirection: "column", gap: "15px", width: "300px", padding: "30px", border: "1px solid #ccc", borderRadius: "10px" }}
       >
         <h2>Login</h2>
         <input type="email" name="email" placeholder="Email" value={form.email} onChange={changeHandler} required />
@@ -42,6 +34,6 @@ function Login() {
       </form>
     </div>
   );
-}
+};
 
 export default Login;
