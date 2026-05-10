@@ -19,5 +19,5 @@
 - bcryptjs for password hashing
 - JSON Web Tokens (JWT)
 - - dotenv for environment variables
-
+.
 
