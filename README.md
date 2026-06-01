@@ -1,6 +1,5 @@
-
-# Hospital Management System - Advanced
-
+# Hospital Management System 
+- Advanced
 **hospital-management-advanced** is a full-featured backend system for managing a hospital. Built with **Node.js**, **Express**, and **MongoDB**, it includes authentication, role-based access control, and CRUD operations for admins, doctors, patients, and appointments.
 
 ## Features
